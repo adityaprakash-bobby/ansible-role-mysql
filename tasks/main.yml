@@ -2,7 +2,7 @@
 # tasks file for mysql
 # Install MySQL
 - name: Install MySQL
-  apt: name={{item}} state=installed
+  apt: name={{ item }} state=installed
   with_items:
     - mysql-server
     - python-mysqldb
@@ -30,7 +30,7 @@
   mysql_user: 
     name: root 
     host: "{{ item }}" 
-    password: "{{mysql_new_root_password.stdout}}"
+    password: "{{ mysql_new_root_password.stdout }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   with_items:
     - "{{ ansible_hostname }}"
@@ -40,7 +40,7 @@
   when: mysql_new_root_password.changed
 
 - name: Output the new password
-  debug: msg="New root password is {{mysql_new_root_password.stdout}}"
+  debug: msg="New root password is {{ mysql_new_root_password.stdout }}"
   when: mysql_new_root_password.changed
   
 - name: Create the default.conf for MySQL
