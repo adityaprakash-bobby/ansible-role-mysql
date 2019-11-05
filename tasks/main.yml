@@ -6,7 +6,9 @@
   with_items:
     - mysql-server
     - python-mysqldb
+    - python3-mysqldb
     - python-pymysql
+    - python3-pymysql
 
 - name: Generate new root password
   command: openssl rand -hex 7 creates=/root/.my.cnf
